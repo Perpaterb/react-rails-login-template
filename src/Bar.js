@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Login from "./components/Login";
-//import Logout from "./components/Logout";
+import LogQ from "./components/LogQ";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Bar = () => {
-    
+
     const classes = useStyles();
 
     return (
@@ -32,9 +32,11 @@ const Bar = () => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    {/* News */}
+                    My app
                 </Typography>
-                <Login/>
+
+
+                <LogQ/>
             </Toolbar>
         </AppBar>
     );

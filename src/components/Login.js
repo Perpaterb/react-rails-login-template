@@ -4,33 +4,34 @@ import axios from "axios";
 
 const Login = () => {
 
+    //console.log("Login page ", localStorage.getItem('jwt'))
+
     const responseSuccessGoogle = (response) => {
-        console.log("profileObj ",response.profileObj);
+        //console.log("profileObj ",response.profileObj);
         axios({
             method: 'POST',
             url: 'http://localhost:4000/googlelogin',
             data: response.profileObj,
-        }).then(response => {
-            console.log("Login response from server ",response.config.data)
-            console.log("Susses ",response)
+        }).then(serverResponse => {
+            //console.log("Susses ",serverResponse)
+            localStorage.setItem('jwt', serverResponse.data.jwt)
+            localStorage.setItem('imageUrl', serverResponse.data.imageUrl)
+            localStorage.setItem('name', serverResponse.data.name)
+            localStorage.setItem('email', serverResponse.data.email)
+            window.location.reload(false)
         });
-
     }
 
-    const responseFailureGoogle = (response) => {
-        console.error("Fail",response);
-    }
 
     return (
         <div>
-            <GoogleLogin
+            <GoogleLogin 
                 clientId="460704800898-qfm4o3f6ug2orf4870k47at45k2v7kse.apps.googleusercontent.com"
                 buttonText="Login"
-                // uxMode='redirect
-                // redirectUri="http://localhost:3000"
-                onSuccess={responseSuccessGoogle}
-                onFailure={responseFailureGoogle}
-                cookiePolicy={'single_host_origin'}
+                onSuccess={(r) => {responseSuccessGoogle(r)}} 
+                onFailure={err => console.log('fail', err)} 
+                //isSignedIn={true}
+                //cookiePolicy={'single_host_origin'}
             />
         </div>
     );
