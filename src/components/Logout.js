@@ -25,16 +25,13 @@ const Logout = () => {
     }
   
     return (
-        <div>
-            {/* <Button onClick={responseSuccessGoogle}>Logout</Button> */}
-            <GoogleLogout
-                clientId="460704800898-qfm4o3f6ug2orf4870k47at45k2v7kse.apps.googleusercontent.com"
-                buttonText="Logout"
-                onSuccess={responseSuccessGoogle}
-                onFailure={err => console.log('fail', err)}
-                //isSignedIn={false}
-            />
-        </div>
+        <GoogleLogout
+            clientId="460704800898-qfm4o3f6ug2orf4870k47at45k2v7kse.apps.googleusercontent.com"
+            buttonText="Logout"
+            onSuccess={responseSuccessGoogle}
+            onFailure={err => console.log('fail', err)}
+            //isSignedIn={false}
+        />
     );
 };
 

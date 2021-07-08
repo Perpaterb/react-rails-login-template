@@ -46,7 +46,9 @@ const LogQ = () => {
     if (userJwt === "undefined") {
 
         return (
-            <Login/>
+            <Toolbar>
+                <Login/>
+            </Toolbar>
         );
 
     } else {
